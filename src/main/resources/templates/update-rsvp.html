@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update RSVP</title>
+</head>
+<body>
+    <h1>Update RSVP</h1>
+
+    <form method="POST" data-th-action="@{/update/{id}(id=*{id})}" data-th-object=${rsvp}>
+        <input type="hidden" name="_method" value="PUT" />
+        <table>
+            <tr>
+                <td>
+                    Name:
+                </td>
+                <td>
+                    <input type="text" data-th-field=*{name} data-th-value=*{name}>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Email:
+                </td>
+                <td>
+                    <input type="text" data-th-field=*{email} data-th-value=*{email}>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Phone:
+                </td>
+                <td>
+                    <input type="text" data-th-field=*{phone} data-th-value=*{phone}>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Comments:
+                </td>
+                <td>
+                    <textarea data-th-field=*{comments} data-th-value=*{comments}></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <button>Update</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

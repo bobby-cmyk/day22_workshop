@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All RSVP</title>
+</head>
+
+<h1>All RSVP</h1>
+<h3>
+    Total attendees: <b><span data-th-text="${count}"></b></span>
+</h3>
+<body>
+    <table border=1 >
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Comments
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+        
+        <tr data-th-each="rsvp : ${rsvps}" data-th-object="${rsvp}">
+            <td data-th-text="*{name}"></td>
+            <td data-th-text="*{email}"></td>
+            <td data-th-text="*{phone}"></td>
+            <td data-th-text="*{comments}"></td>
+            <td><a data-th-href="@{/update/{id}(id=*{id})}">Update</a></td>
+            
+            <td>
+                <form method="POST" data-th-action="@{/delete/{id}(id=*{id})}"}>
+                    <input type="hidden" name="_method" value="DELETE" />
+                    <button type="submit">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        Not yet RSVP? <a href="/new">Click here</a>
+    </p>
+</body>
+</html>
